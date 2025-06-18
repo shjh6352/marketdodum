@@ -1,56 +1,90 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>마켓돋움</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      color: #333;
     }
+
     header {
-      background-color: #2b2b8f;
+      background: linear-gradient(to right, #667eea, #764ba2);
       color: white;
-      padding: 20px;
-      width: 100%;
+      padding: 50px 20px;
       text-align: center;
     }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 22px;
+    }
+
     main {
-      padding: 30px;
-      max-width: 700px;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 40px 30px;
+      margin-bottom: 40px;
       text-align: center;
     }
-    .form-section {
-      background-color: white;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    section.description p {
+      font-size: 20px;
+      margin-bottom: 12px;
     }
-    input, textarea {
+
+    section h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #4b0082;
+    }
+
+    iframe {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    button {
-      background-color: #2b2b8f;
-      color: white;
-      padding: 10px 20px;
+      height: 600px;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
+      border-radius: 8px;
+      margin-top: 20px;
     }
-    .hidden {
-      display: none;
+
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      font-size: 18px;
+      border: none;
+      background-color: #5b21b6;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #4c1d95;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 16px;
+      color: #888;
     }
   </style>
 </head>
@@ -61,7 +95,7 @@
   </header>
 
   <main>
-    <section>
+    <section class="description">
       <p>작지만 강한 당신의 가게, 이제 혼자 고민하지 마세요.</p>
       <p>마켓돋움은 소상공인을 위한 맞춤형 마케팅 지원 플랫폼입니다.</p>
       <p>가게의 매력을 제대로 알리고 싶은데 방법을 몰라 막막하셨다면,</p>
@@ -71,27 +105,27 @@
       <p>마켓돋움, 마케팅의 든든한 디딤돌이 되어드릴게요.</p>
     </section>
 
-    <section class="form-section" id="login-form">
-      <h2>신청 로그인</h2>
-      <form onsubmit="event.preventDefault(); showComplete();">
-        <input type="text" placeholder="가게 이름" required><br>
-        <input type="text" placeholder="신청인 이름" required><br>
-        <input type="tel" placeholder="전화번호" required><br>
-        <textarea placeholder="추구하는 목표" required></textarea><br>
-        <button type="submit">로그인</button>
-      </form>
+    <section id="step2">
+      <h2>신청하기</h2>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfBfBI25wZ3tQgZlG0taYqFcqgwDQN3CJ-3s0szB6hS-tLMEw/viewform">로딩중...</iframe>
+      <p style="margin-top: 15px;">폼을 제출하셨다면 아래 버튼을 눌러 주세요.</p>
+      <button onclick="goToStep(3)">제출 완료</button>
     </section>
 
-    <section class="form-section hidden" id="complete-message">
+    <section id="step3" style="display: none;">
       <h2>신청이 완료되었습니다!</h2>
-      <p>마켓돋움과 함께할 준비가 되셨습니다 :)</p>
+      <p>소중한 신청 감사합니다. 빠른 시일 내에 연락드릴게요 😊</p>
     </section>
   </main>
 
+  <footer>
+    &copy; 2025 마켓돋움. 모든 권리 보유.
+  </footer>
+
   <script>
-    function showComplete() {
-      document.getElementById('login-form').classList.add('hidden');
-      document.getElementById('complete-message').classList.remove('hidden');
+    function goToStep(step) {
+      document.getElementById('step2').style.display = 'none';
+      document.getElementById('step3').style.display = 'block';
     }
   </script>
 </body>
